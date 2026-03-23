@@ -17,6 +17,13 @@ import { Phone, MapPin, Mail, Send } from "lucide-react"
 
 const MESSAGE_MAX_LENGTH = 5000
 
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit"
+
+function str(fd: FormData, key: string) {
+  const v = fd.get(key)
+  return typeof v === "string" ? v.trim() : ""
+}
+
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -24,20 +31,78 @@ export function ContactForm() {
   const [referralSource, setReferralSource] = useState("")
   const [referralOther, setReferralOther] = useState("")
   const [referralError, setReferralError] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setSubmitError(null)
     if (!referralSource) {
       setReferralError(true)
       return
     }
     setReferralError(false)
     if (referralSource === "other" && !referralOther.trim()) return
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
+    if (!accessKey) {
+      setSubmitError(
+        "This form is not connected yet. Please call 281-380-2128 or email castle.keys.of.texas@gmail.com."
+      )
+      return
+    }
+
+    const form = e.currentTarget
+    const fd = new FormData(form)
+    const fullName = str(fd, "fullName")
+    const phone = str(fd, "phone")
+    const email = str(fd, "email")
+    const propertyAddress = str(fd, "propertyAddress")
+    const city = str(fd, "city")
+    const propertyType = str(fd, "propertyType")
+    const bedrooms = str(fd, "bedrooms")
+    const occupancyStatus = str(fd, "occupancyStatus")
+    const message = str(fd, "message")
+
+    const howHeard =
+      referralSource === "other"
+        ? `Other (${referralOther.trim()})`
+        : referralSource
+
+    const bodyText = [
+      `Property address: ${propertyAddress}`,
+      `City: ${city}`,
+      `Property type: ${propertyType}`,
+      `Bedrooms / units: ${bedrooms}`,
+      `Occupancy: ${occupancyStatus}`,
+      `How they heard about us: ${howHeard}`,
+      "",
+      message ? `Message:\n${message}` : "(No message provided)",
+    ].join("\n")
+
     setIsSubmitting(true)
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    try {
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: "Castle Keys — New property inquiry",
+          name: fullName,
+          email,
+          phone,
+          message: bodyText,
+        }),
+      })
+      const data = (await res.json()) as { success?: boolean; message?: string }
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Something went wrong. Please try again or call us.")
+      }
+      setIsSubmitted(true)
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Submission failed. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -306,6 +371,12 @@ export function ContactForm() {
                     {messageLength.toLocaleString()} / {MESSAGE_MAX_LENGTH.toLocaleString()} characters
                   </p>
                 </div>
+
+                {submitError && (
+                  <p className="text-sm text-red-600" role="alert">
+                    {submitError}
+                  </p>
+                )}
 
                 <Button 
                   type="submit"

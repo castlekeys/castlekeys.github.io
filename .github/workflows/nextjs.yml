@@ -34,6 +34,8 @@ jobs:
 
       - name: Build with Next.js (static export)
         run: npm run export
+        env:
+          NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
