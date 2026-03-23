@@ -7,7 +7,7 @@ const trustIndicators = [
   { icon: FileText, text: "Minimum 3-year lease structure" },
   { icon: Users, text: "Highly screened occupant tenants" },
   { icon: Shield, text: "Tailored lease terms" },
-  { icon: MapPin, text: "Serving Houston, Spring & surrounding areas" },
+  { icon: MapPin, text: "Serving the Greater Houston Area" },
 ]
 
 export function Hero() {
@@ -28,7 +28,7 @@ export function Hero() {
               Rent Your House To Us Today
             </h1>
             <p className="mt-6 text-xl text-charcoal/80 font-medium">
-              A safer, smarter way to lease your property in Houston, Spring, and surrounding areas.
+              A safer, smarter way to lease your property in the Greater Houston Area.
             </p>
             <p className="mt-4 text-base text-charcoal/70 leading-relaxed max-w-xl mx-auto lg:mx-0">
               Castle Keys of Texas helps property owners lease their homes through a tailored master lease structure designed for long-term occupancy and highly screened occupant tenants.

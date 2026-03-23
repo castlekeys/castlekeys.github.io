@@ -15,7 +15,7 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: 'Castle Keys of Texas | Master Lease Your Property in Houston',
-  description: 'Castle Keys of Texas helps property owners lease their homes through a tailored master lease structure. Serving Houston, Spring, and surrounding areas.',
+  description: 'Castle Keys of Texas helps property owners lease their homes through a tailored master lease structure. Serving the Greater Houston Area.',
   keywords: ['master lease', 'Houston property management', 'tired landlord', 'lease your house', 'Spring TX rentals', 'property owner solutions'],
   icons: {
     icon: [

@@ -10,13 +10,14 @@ export function AboutFounder() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image */}
           <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[2/3] max-h-[min(85vh,720px)] mx-auto lg:mx-0">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/House-dtYhbQbaL3ThlU3XXIwRkhbSqTKKKC.jpg"
-                alt="Beautiful suburban Texas home"
-                width={600}
-                height={450}
-                className="w-full h-auto object-cover"
+                src="/images/benita-stanford-founder.jpg"
+                alt="Benita Stanford, founder of Castle Keys of Texas"
+                width={800}
+                height={1200}
+                className="w-full h-full object-cover object-center"
+                priority
               />
             </div>
             {/* Quote Card */}

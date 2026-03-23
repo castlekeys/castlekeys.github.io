@@ -31,7 +31,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 text-white/70 leading-relaxed max-w-md">
-              Helping property owners in Houston, Spring, and surrounding areas lease their homes through a tailored master lease structure.
+              Helping property owners in the Greater Houston Area lease their homes through a tailored master lease structure.
             </p>
 
             {/* Contact Info */}

@@ -15,9 +15,12 @@ import {
 } from "@/components/ui/select"
 import { Phone, MapPin, Mail, Send } from "lucide-react"
 
+const MESSAGE_MAX_LENGTH = 5000
+
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [messageLength, setMessageLength] = useState(0)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -180,7 +183,6 @@ export function ContactForm() {
                       <SelectContent>
                         <SelectItem value="single-family">Single Family Home</SelectItem>
                         <SelectItem value="townhouse">Townhouse</SelectItem>
-                        <SelectItem value="condo">Condo</SelectItem>
                         <SelectItem value="duplex">Duplex</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
@@ -222,13 +224,22 @@ export function ContactForm() {
 
                 <div className="space-y-2">
                   <Label htmlFor="message" className="text-charcoal">Message (Optional)</Label>
-                  <Textarea 
-                    id="message" 
+                  <p id="message-hint" className="text-sm text-charcoal/60">
+                    Share as much detail as you like (up to about 800 words — {MESSAGE_MAX_LENGTH.toLocaleString()} characters).
+                  </p>
+                  <Textarea
+                    id="message"
                     name="message"
-                    rows={4}
-                    placeholder="Tell us about your property or any specific needs..."
-                    className="border-gray-border focus:border-purple-cta focus:ring-purple-cta resize-none"
+                    rows={10}
+                    maxLength={MESSAGE_MAX_LENGTH}
+                    placeholder="Tell us about your property, timeline, questions, or anything else we should know..."
+                    className="border-gray-border focus:border-purple-cta focus:ring-purple-cta min-h-[200px] resize-y"
+                    aria-describedby="message-hint message-count"
+                    onChange={(e) => setMessageLength(e.target.value.length)}
                   />
+                  <p id="message-count" className="text-xs text-charcoal/50 text-right" aria-live="polite">
+                    {messageLength.toLocaleString()} / {MESSAGE_MAX_LENGTH.toLocaleString()} characters
+                  </p>
                 </div>
 
                 <Button 
