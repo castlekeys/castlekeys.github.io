@@ -21,9 +21,18 @@ export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [messageLength, setMessageLength] = useState(0)
+  const [referralSource, setReferralSource] = useState("")
+  const [referralOther, setReferralOther] = useState("")
+  const [referralError, setReferralError] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (!referralSource) {
+      setReferralError(true)
+      return
+    }
+    setReferralError(false)
+    if (referralSource === "other" && !referralOther.trim()) return
     setIsSubmitting(true)
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000))
@@ -220,6 +229,62 @@ export function ContactForm() {
                       </SelectContent>
                     </Select>
                   </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="referralSource" className="text-charcoal">
+                    How did you learn about us? *
+                  </Label>
+                  <Select
+                    name="referralSource"
+                    required
+                    value={referralSource || undefined}
+                    onValueChange={(value) => {
+                      setReferralSource(value)
+                      setReferralError(false)
+                      if (value !== "other") setReferralOther("")
+                    }}
+                  >
+                    <SelectTrigger
+                      id="referralSource"
+                      className="border-gray-border focus:border-purple-cta focus:ring-purple-cta w-full"
+                    >
+                      <SelectValue placeholder="Select one" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="google-search">Google Search</SelectItem>
+                      <SelectItem value="yelp">Yelp</SelectItem>
+                      <SelectItem value="facebook">Facebook</SelectItem>
+                      <SelectItem value="nextdoor">Nextdoor</SelectItem>
+                      <SelectItem value="referral">Referral or word of mouth</SelectItem>
+                      <SelectItem value="mail-postcard">Mail or postcard</SelectItem>
+                      <SelectItem value="sign-driveby">Sign, billboard, or drove by</SelectItem>
+                      <SelectItem value="realtor-agent">Realtor or agent</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {referralError && (
+                    <p className="text-sm text-red-600" role="alert">
+                      Please select how you learned about us.
+                    </p>
+                  )}
+                  {referralSource === "other" && (
+                    <div className="space-y-2 pt-1">
+                      <Label htmlFor="referralSourceOther" className="text-charcoal">
+                        Please specify *
+                      </Label>
+                      <Input
+                        id="referralSourceOther"
+                        name="referralSourceOther"
+                        required
+                        value={referralOther}
+                        onChange={(e) => setReferralOther(e.target.value)}
+                        placeholder="Tell us how you heard about us"
+                        className="border-gray-border focus:border-purple-cta focus:ring-purple-cta"
+                        aria-required="true"
+                      />
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-2">

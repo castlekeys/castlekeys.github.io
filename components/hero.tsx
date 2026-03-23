@@ -1,10 +1,9 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Phone, Shield, Users, FileText, MapPin } from "lucide-react"
+import { Phone, Shield, Users, MapPin } from "lucide-react"
 
 const trustIndicators = [
-  { icon: FileText, text: "Minimum 3-year lease structure" },
   { icon: Users, text: "Highly screened occupant tenants" },
   { icon: Shield, text: "Tailored lease terms" },
   { icon: MapPin, text: "Serving the Greater Houston Area" },
@@ -78,7 +77,7 @@ export function Hero() {
 
         {/* Trust Indicators */}
         <div className="mt-16 lg:mt-20">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             {trustIndicators.map((item, index) => (
               <div 
                 key={index}

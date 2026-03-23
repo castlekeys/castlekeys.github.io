@@ -19,7 +19,7 @@ const features = [
   {
     icon: Clock,
     title: "Long-Term Occupancy Focus",
-    description: "We prioritize stability with minimum 3-year lease structures that reduce turnover and vacancy.",
+    description: "We prioritize stability and longer-term occupancy that can help reduce turnover and vacancy.",
   },
   {
     icon: UserCheck,

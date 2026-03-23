@@ -48,11 +48,6 @@ export function Benefits() {
                 className="w-full h-auto object-cover"
               />
             </div>
-            {/* Stats Card */}
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-6 border border-gray-border">
-              <div className="text-3xl font-bold text-purple-dark">3+</div>
-              <div className="text-sm text-charcoal/70">Year minimum<br />lease structure</div>
-            </div>
           </div>
         </div>
       </div>
