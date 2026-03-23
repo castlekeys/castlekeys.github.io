@@ -25,7 +25,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%20keys-W23gPUHL34hMplQCd4LlPeTj7vkUO4.jpg"
+              src="/images/castle-keys-logo.jpg"
               alt="Castle Keys Logo"
               width={40}
               height={40}
