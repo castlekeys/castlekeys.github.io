@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { HashSectionLink } from "@/components/hash-section-link"
 import { Button } from "@/components/ui/button"
 import { Phone, Shield, Users, MapPin } from "lucide-react"
 
@@ -40,7 +41,7 @@ export function Hero() {
                 size="lg"
                 className="bg-purple-cta hover:bg-purple-dark text-white rounded-full px-8 text-base shadow-lg shadow-purple-cta/25"
               >
-                <Link href="#contact">Get a Free Rental Analysis</Link>
+                <HashSectionLink href="#contact">Get a Free Rental Analysis</HashSectionLink>
               </Button>
               <Button 
                 asChild

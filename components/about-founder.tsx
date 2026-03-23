@@ -1,5 +1,5 @@
 import Image from "next/image"
-import Link from "next/link"
+import { HashSectionLink } from "@/components/hash-section-link"
 import { Button } from "@/components/ui/button"
 import { Quote } from "lucide-react"
 
@@ -48,13 +48,13 @@ export function AboutFounder() {
               </p>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-8 flex justify-center lg:justify-start">
               <Button 
                 asChild
                 size="lg"
                 className="bg-purple-cta hover:bg-purple-dark text-white rounded-full px-8"
               >
-                <Link href="#contact">Work With Us</Link>
+                <HashSectionLink href="#contact">Work With Us</HashSectionLink>
               </Button>
             </div>
           </div>

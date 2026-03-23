@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { HashSectionLink } from "@/components/hash-section-link"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Phone } from "lucide-react"
 
@@ -31,7 +32,7 @@ export function Header() {
               height={40}
               className="h-10 w-10 object-contain"
             />
-            <span className="font-serif text-xl font-semibold text-purple-dark hidden sm:block">
+            <span className="font-serif text-base sm:text-xl font-semibold text-purple-dark">
               Castle Keys of Texas
             </span>
           </Link>
@@ -69,44 +70,47 @@ export function Header() {
           {/* Mobile Menu Button */}
           <button
             type="button"
-            className="lg:hidden p-2 text-purple-dark"
+            className="lg:hidden flex items-center justify-center w-10 h-10 rounded-xl bg-lavender/40 hover:bg-lavender/70 text-purple-dark transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-border">
-          <div className="px-4 py-4 space-y-3">
+        <div className="lg:hidden bg-white/98 backdrop-blur-sm border-t border-gray-border shadow-xl">
+          <nav className="px-4 pt-3 pb-2">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block py-2 text-base font-medium text-charcoal hover:text-purple-dark transition-colors"
+                className="flex items-center py-3 text-base font-medium text-charcoal hover:text-purple-dark border-b border-gray-border/50 last:border-0 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="pt-4 border-t border-gray-border space-y-3">
-              <Link 
-                href="tel:281-380-2128" 
-                className="flex items-center gap-2 py-2 text-base font-medium text-purple-dark"
-              >
-                <Phone className="h-5 w-5" />
-                281-380-2128
-              </Link>
-              <Button 
-                asChild
-                className="w-full bg-purple-cta hover:bg-purple-dark text-white rounded-full"
-              >
-                <Link href="#contact">Request Property Review</Link>
-              </Button>
-            </div>
+          </nav>
+          <div className="px-4 pt-2 pb-5 space-y-3">
+            <Link
+              href="tel:281-380-2128"
+              className="flex items-center justify-center gap-2 w-full py-3 rounded-full border-2 border-purple-dark text-purple-dark font-semibold text-base hover:bg-purple-dark hover:text-white transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <Phone className="h-4 w-4" />
+              281-380-2128
+            </Link>
+            <Button
+              asChild
+              className="w-full bg-purple-cta hover:bg-purple-dark text-white rounded-full py-3 text-base font-semibold shadow-lg shadow-purple-cta/20"
+            >
+              <HashSectionLink href="#contact" onClick={() => setMobileMenuOpen(false)}>
+                Request Property Review
+              </HashSectionLink>
+            </Button>
           </div>
         </div>
       )}
