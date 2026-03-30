@@ -12,6 +12,7 @@ next.user-config.*
 .env*.local
 
 # Common ignores
+.claude/
 node_modules/
 .next/
 out/
