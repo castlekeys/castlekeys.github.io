@@ -3,26 +3,33 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
+import { SectionLink } from "@/components/section-link"
 import { HashSectionLink } from "@/components/hash-section-link"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Phone } from "lucide-react"
+import { navSectionLinks, PAYMENT_PAGE_PATH } from "@/lib/site"
 
-const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#how-it-works", label: "How It Works" },
-  { href: "#why-us", label: "Why Us" },
-  { href: "#about", label: "About" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
-]
+const primaryCtaClassName =
+  "bg-purple-cta hover:bg-purple-dark text-white rounded-full shadow-lg shadow-purple-cta/20"
+
+/** Same outline style as hero “Call 281-380-2128” (components/hero.tsx) */
+const outlineCtaButtonClassName =
+  "border-2 border-purple-dark text-purple-dark hover:bg-purple-dark hover:text-white rounded-full shadow-none"
+
+/** Mobile menu: matches phone link (Call 281-380-2128 row) */
+const mobileOutlineLinkClassName =
+  "flex items-center justify-center gap-2 w-full py-3 rounded-full border-2 border-purple-dark text-purple-dark font-semibold text-base hover:bg-purple-dark hover:text-white transition-colors"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+  const isHome = pathname === "/"
 
   return (
     <header className="sticky top-0 z-50 w-full bg-lavender-light/95 backdrop-blur-sm border-b border-gray-border">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
+        <div className="flex min-h-20 py-3 lg:py-2 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <Image
@@ -39,32 +46,42 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
+            {navSectionLinks.map((link) => (
+              <SectionLink
                 key={link.href}
                 href={link.href}
                 className="text-sm font-medium text-charcoal hover:text-purple-dark transition-colors"
               >
                 {link.label}
-              </Link>
+              </SectionLink>
             ))}
           </nav>
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <Link 
-              href="tel:281-380-2128" 
-              className="flex items-center gap-2 text-sm font-medium text-purple-dark hover:text-purple-cta transition-colors"
+            <Link
+              href="tel:281-380-2128"
+              className="hidden xl:flex items-center gap-2 text-sm font-medium text-purple-dark hover:text-purple-cta transition-colors shrink-0"
             >
               <Phone className="h-4 w-4" />
               281-380-2128
             </Link>
-            <Button 
-              asChild
-              className="bg-purple-cta hover:bg-purple-dark text-white rounded-full px-6"
-            >
-              <Link href="#contact">Request Property Review</Link>
-            </Button>
+            <div className="flex flex-col gap-2 items-stretch">
+              <Button asChild className={`${primaryCtaClassName} px-5 text-sm h-9`}>
+                {isHome ? (
+                  <HashSectionLink href="#contact">Request Property Review</HashSectionLink>
+                ) : (
+                  <Link href="/#contact">Request Property Review</Link>
+                )}
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className={`${outlineCtaButtonClassName} px-5 text-sm font-semibold h-9 whitespace-nowrap`}
+              >
+                <Link href={PAYMENT_PAGE_PATH}>Tenant Payment Portal</Link>
+              </Button>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -83,21 +100,21 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white/98 backdrop-blur-sm border-t border-gray-border shadow-xl">
           <nav className="px-4 pt-3 pb-2">
-            {navLinks.map((link) => (
-              <Link
+            {navSectionLinks.map((link) => (
+              <SectionLink
                 key={link.href}
                 href={link.href}
                 className="flex items-center py-3 text-base font-medium text-charcoal hover:text-purple-dark border-b border-gray-border/50 last:border-0 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
-              </Link>
+              </SectionLink>
             ))}
           </nav>
           <div className="px-4 pt-2 pb-5 space-y-3">
             <Link
               href="tel:281-380-2128"
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-full border-2 border-purple-dark text-purple-dark font-semibold text-base hover:bg-purple-dark hover:text-white transition-colors"
+              className={mobileOutlineLinkClassName}
               onClick={() => setMobileMenuOpen(false)}
             >
               <Phone className="h-4 w-4" />
@@ -105,12 +122,25 @@ export function Header() {
             </Link>
             <Button
               asChild
-              className="w-full bg-purple-cta hover:bg-purple-dark text-white rounded-full py-3 text-base font-semibold shadow-lg shadow-purple-cta/20"
+              className={`w-full ${primaryCtaClassName} py-3 text-base font-semibold`}
             >
-              <HashSectionLink href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                Request Property Review
-              </HashSectionLink>
+              {isHome ? (
+                <HashSectionLink href="#contact" onClick={() => setMobileMenuOpen(false)}>
+                  Request Property Review
+                </HashSectionLink>
+              ) : (
+                <Link href="/#contact" onClick={() => setMobileMenuOpen(false)}>
+                  Request Property Review
+                </Link>
+              )}
             </Button>
+            <Link
+              href={PAYMENT_PAGE_PATH}
+              className={mobileOutlineLinkClassName}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Tenant Payment Portal
+            </Link>
           </div>
         </div>
       )}

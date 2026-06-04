@@ -1,16 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
-import { HashSectionLink } from "@/components/hash-section-link"
+import { SectionLink } from "@/components/section-link"
 import { Phone, MapPin } from "lucide-react"
-
-const quickLinks: { href: `#${string}`; label: string }[] = [
-  { href: "#home", label: "Home" },
-  { href: "#how-it-works", label: "How It Works" },
-  { href: "#why-us", label: "Why Us" },
-  { href: "#about", label: "About" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
-]
+import { navSectionLinks, PAYMENT_PAGE_PATH } from "@/lib/site"
 
 const serviceAreas = [
   "Houston",
@@ -68,16 +60,24 @@ export function Footer() {
                 Quick Links
               </h3>
               <ul className="space-y-2.5 lg:space-y-3">
-                {quickLinks.map((link) => (
+                {navSectionLinks.map((link) => (
                   <li key={link.href}>
-                    <HashSectionLink
+                    <SectionLink
                       href={link.href}
                       className="text-sm text-white/75 transition-colors hover:text-white lg:text-base"
                     >
                       {link.label}
-                    </HashSectionLink>
+                    </SectionLink>
                   </li>
                 ))}
+                <li>
+                  <Link
+                    href={PAYMENT_PAGE_PATH}
+                    className="text-sm text-white/75 transition-colors hover:text-white lg:text-base"
+                  >
+                    Tenant Payment Portal
+                  </Link>
+                </li>
               </ul>
             </div>
 

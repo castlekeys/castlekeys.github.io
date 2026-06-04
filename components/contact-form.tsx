@@ -86,7 +86,7 @@ export function ContactForm() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: accessKey,
-          subject: "Castle Keys — New property inquiry",
+          subject: "Castle Keys: New property inquiry",
           name: fullName,
           email,
           phone,
@@ -355,7 +355,7 @@ export function ContactForm() {
                 <div className="space-y-2">
                   <Label htmlFor="message" className="text-charcoal">Message (Optional)</Label>
                   <p id="message-hint" className="text-sm text-charcoal/60">
-                    Share as much detail as you like (up to about 800 words — {MESSAGE_MAX_LENGTH.toLocaleString()} characters).
+                    Share as much detail as you like (up to about 800 words, or {MESSAGE_MAX_LENGTH.toLocaleString()} characters).
                   </p>
                   <Textarea
                     id="message"
