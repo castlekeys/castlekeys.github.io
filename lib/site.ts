@@ -5,8 +5,8 @@ export const PAYMENT_PAGE_PATH = "/pay"
 
 export const navSectionLinks = [
   { href: "#home", label: "Home" },
-  { href: "#how-it-works", label: "How It Works" },
   { href: "#why-us", label: "Why Us" },
+  { href: "#how-it-works", label: "How It Works" },
   { href: "#about", label: "About" },
   { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Contact" },
