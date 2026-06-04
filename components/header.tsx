@@ -21,6 +21,12 @@ const outlineCtaButtonClassName =
 const mobileOutlineLinkClassName =
   "flex items-center justify-center gap-2 w-full py-3 rounded-full border-2 border-purple-dark text-purple-dark font-semibold text-base hover:bg-purple-dark hover:text-white transition-colors"
 
+const desktopPhoneClassName =
+  "inline-flex items-center gap-2.5 text-base xl:text-lg font-semibold tabular-nums tracking-tight text-purple-dark hover:text-purple-cta transition-colors shrink-0"
+
+const navLinksMain = navSectionLinks.slice(0, -1)
+const contactNavLink = navSectionLinks[navSectionLinks.length - 1]
+
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
@@ -44,43 +50,51 @@ export function Header() {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navSectionLinks.map((link) => (
-              <SectionLink
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-charcoal hover:text-purple-dark transition-colors"
-              >
-                {link.label}
-              </SectionLink>
-            ))}
-          </nav>
+          {/* Desktop: nav · Contact · phone (centered) · CTAs */}
+          <div className="hidden lg:flex flex-1 items-center justify-end gap-8 min-w-0 ml-6">
+            <nav className="flex items-center gap-8 shrink-0">
+              {navLinksMain.map((link) => (
+                <SectionLink
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium text-charcoal hover:text-purple-dark transition-colors"
+                >
+                  {link.label}
+                </SectionLink>
+              ))}
+            </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-4">
-            <Link
-              href="tel:281-380-2128"
-              className="hidden xl:flex items-center gap-2 text-sm font-medium text-purple-dark hover:text-purple-cta transition-colors shrink-0"
-            >
-              <Phone className="h-4 w-4" />
-              281-380-2128
-            </Link>
-            <div className="flex flex-col gap-2 items-stretch">
-              <Button asChild className={`${primaryCtaClassName} px-5 text-sm h-9`}>
-                {isHome ? (
-                  <HashSectionLink href="#contact">Request Property Review</HashSectionLink>
-                ) : (
-                  <Link href="/#contact">Request Property Review</Link>
-                )}
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className={`${outlineCtaButtonClassName} px-5 text-sm font-semibold h-9 whitespace-nowrap`}
+            <div className="flex flex-1 items-center justify-end min-w-0 max-w-3xl">
+              <SectionLink
+                href={contactNavLink.href}
+                className="text-sm font-medium text-charcoal hover:text-purple-dark transition-colors shrink-0"
               >
-                <Link href={PAYMENT_PAGE_PATH}>Tenant Payment Portal</Link>
-              </Button>
+                {contactNavLink.label}
+              </SectionLink>
+
+              <div className="flex flex-1 items-center justify-center px-6 sm:px-8 min-w-[10rem]">
+                <Link href="tel:281-380-2128" className={desktopPhoneClassName}>
+                  <Phone className="h-5 w-5 xl:h-6 xl:w-6 shrink-0" aria-hidden />
+                  <span>281-380-2128</span>
+                </Link>
+              </div>
+
+              <div className="flex flex-col gap-2 items-stretch shrink-0">
+                <Button asChild className={`${primaryCtaClassName} px-5 text-sm h-9`}>
+                  {isHome ? (
+                    <HashSectionLink href="#contact">Request Property Review</HashSectionLink>
+                  ) : (
+                    <Link href="/#contact">Request Property Review</Link>
+                  )}
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className={`${outlineCtaButtonClassName} px-5 text-sm font-semibold h-9 whitespace-nowrap`}
+                >
+                  <Link href={PAYMENT_PAGE_PATH}>Tenant Payment Portal</Link>
+                </Button>
+              </div>
             </div>
           </div>
 
