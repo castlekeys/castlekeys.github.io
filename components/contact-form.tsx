@@ -121,7 +121,7 @@ export function ContactForm() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Contact Info */}
           <div>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-purple-dark text-balance">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-purple-ink text-balance">
               Let&apos;s Get Your House Leased
             </h2>
             <p className="mt-4 text-lg text-charcoal/70 leading-relaxed">
@@ -131,11 +131,11 @@ export function ContactForm() {
             {/* Contact Details */}
             <div className="mt-10 space-y-6">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center border border-gray-border">
+                <div className="flex-shrink-0 w-12 h-12 bg-surface rounded-xl shadow-sm flex items-center justify-center border border-gray-border">
                   <Phone className="h-6 w-6 text-purple-cta" />
                 </div>
                 <div>
-                  <div className="font-semibold text-purple-dark">Phone</div>
+                  <div className="font-semibold text-purple-ink">Phone</div>
                   <a href="tel:281-380-2128" className="text-charcoal/70 hover:text-purple-cta transition-colors">
                     281-380-2128
                   </a>
@@ -143,11 +143,11 @@ export function ContactForm() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center border border-gray-border">
+                <div className="flex-shrink-0 w-12 h-12 bg-surface rounded-xl shadow-sm flex items-center justify-center border border-gray-border">
                   <MapPin className="h-6 w-6 text-purple-cta" />
                 </div>
                 <div>
-                  <div className="font-semibold text-purple-dark">Address</div>
+                  <div className="font-semibold text-purple-ink">Address</div>
                   <p className="text-charcoal/70">
                     330 Rayford Rd., #146<br />
                     Spring, TX 77386
@@ -156,11 +156,11 @@ export function ContactForm() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center border border-gray-border">
+                <div className="flex-shrink-0 w-12 h-12 bg-surface rounded-xl shadow-sm flex items-center justify-center border border-gray-border">
                   <Mail className="h-6 w-6 text-purple-cta" />
                 </div>
                 <div>
-                  <div className="font-semibold text-purple-dark">Service Area</div>
+                  <div className="font-semibold text-purple-ink">Service Area</div>
                   <p className="text-charcoal/70">
                     Houston, Spring, and<br />
                     surrounding Houston area
@@ -182,13 +182,13 @@ export function ContactForm() {
           </div>
 
           {/* Form */}
-          <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 border border-gray-border">
+          <div className="bg-surface rounded-2xl shadow-xl p-6 sm:p-8 border border-gray-border">
             {isSubmitted ? (
               <div className="text-center py-12">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Send className="h-8 w-8 text-green-600" />
                 </div>
-                <h3 className="text-2xl font-semibold text-purple-dark mb-2">Thank You!</h3>
+                <h3 className="text-2xl font-semibold text-purple-ink mb-2">Thank You!</h3>
                 <p className="text-charcoal/70">
                   We&apos;ve received your property submission and will be in touch soon.
                 </p>

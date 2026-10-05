@@ -52,7 +52,7 @@ export function HowItWorks() {
 
           {/* Content */}
           <div className="order-1 lg:order-2">
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-purple-dark text-balance">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-purple-ink text-balance">
               How It Works
             </h2>
             <p className="mt-4 text-lg text-charcoal/70 leading-relaxed">
@@ -64,14 +64,14 @@ export function HowItWorks() {
               {steps.map((step, index) => (
                 <div key={index} className="flex gap-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center border border-gray-border">
+                    <div className="w-12 h-12 bg-surface rounded-xl shadow-sm flex items-center justify-center border border-gray-border">
                       <step.icon className="h-6 w-6 text-purple-cta" />
                     </div>
                   </div>
                   <div>
                     <div className="flex items-center gap-3">
                       <span className="text-xs font-bold text-lavender">{step.number}</span>
-                      <h3 className="text-lg font-semibold text-purple-dark">{step.title}</h3>
+                      <h3 className="text-lg font-semibold text-purple-ink">{step.title}</h3>
                     </div>
                     <p className="mt-1 text-charcoal/70 leading-relaxed">{step.description}</p>
                   </div>

@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { SectionLink } from "@/components/section-link"
-import { Phone, MapPin } from "lucide-react"
+import { Phone, MapPin, Mail } from "lucide-react"
 import { navSectionLinks, PAYMENT_PAGE_PATH } from "@/lib/site"
 
 const serviceAreas = [
@@ -43,6 +43,13 @@ export function Footer() {
               >
                 <Phone className="h-5 w-5 flex-shrink-0 text-lavender" />
                 <span>281-380-2128</span>
+              </a>
+              <a
+                href="mailto:benita.stanford@yahoo.com"
+                className="flex items-center justify-center gap-3 text-base font-medium text-white/90 transition-colors hover:text-white lg:justify-start"
+              >
+                <Mail className="h-5 w-5 flex-shrink-0 text-lavender" />
+                <span>benita.stanford@yahoo.com</span>
               </a>
               <div className="flex items-start justify-center gap-3 text-left text-white/80 lg:justify-start lg:text-white/80">
                 <MapPin className="h-5 w-5 flex-shrink-0 text-lavender mt-0.5" />

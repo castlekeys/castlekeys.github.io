@@ -5,7 +5,7 @@ import { Quote } from "lucide-react"
 
 export function AboutFounder() {
   return (
-    <section id="about" className="py-20 lg:py-28 bg-white">
+    <section id="about" className="py-20 lg:py-28 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image */}
@@ -21,19 +21,19 @@ export function AboutFounder() {
               />
             </div>
             {/* Quote Card */}
-            <div className="absolute -bottom-6 -right-6 lg:right-auto lg:-left-6 bg-white rounded-xl shadow-lg p-5 max-w-xs border border-gray-border">
+            <div className="absolute -bottom-6 -right-6 lg:right-auto lg:-left-6 bg-surface rounded-xl shadow-lg p-5 max-w-xs border border-gray-border">
               <Quote className="h-8 w-8 text-lavender mb-2" />
               <p className="text-sm text-charcoal/80 italic leading-relaxed">
                 &ldquo;Experience taught me that better systems create better outcomes for everyone.&rdquo;
               </p>
-              <p className="mt-3 text-sm font-semibold text-purple-dark">Benita Stanford</p>
+              <p className="mt-3 text-sm font-semibold text-purple-ink">Benita Stanford</p>
               <p className="text-xs text-charcoal/60">Founder, Castle Keys of Texas</p>
             </div>
           </div>
 
           {/* Content */}
           <div>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-purple-dark text-balance">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-purple-ink text-balance">
               Meet the Founder
             </h2>
             <div className="mt-6 space-y-4 text-charcoal/70 leading-relaxed">

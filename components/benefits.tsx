@@ -17,7 +17,7 @@ export function Benefits() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Content */}
           <div>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-purple-dark text-balance">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-purple-ink text-balance">
               Benefits for Property Owners
             </h2>
             <p className="mt-4 text-lg text-charcoal/70 leading-relaxed">

@@ -24,7 +24,7 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Content */}
           <div className="text-center lg:text-left">
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-purple-dark leading-tight text-balance">
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-purple-ink leading-tight text-balance">
               Rent Your House To Us Today
             </h1>
             <p className="mt-6 text-xl text-charcoal/80 font-medium">
@@ -47,7 +47,7 @@ export function Hero() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-2 border-purple-dark text-purple-dark hover:bg-purple-dark hover:text-white rounded-full px-8 text-base"
+                className="border-2 border-purple-ink text-purple-ink hover:bg-purple-dark hover:text-white rounded-full px-8 text-base"
               >
                 <Link href="tel:281-380-2128" className="flex items-center gap-2">
                   <Phone className="h-5 w-5" />
@@ -82,10 +82,10 @@ export function Hero() {
             {trustIndicators.map((item, index) => (
               <div 
                 key={index}
-                className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-sm border border-gray-border"
+                className="flex items-center gap-3 p-4 bg-surface rounded-xl shadow-sm border border-gray-border"
               >
                 <div className="flex-shrink-0 w-10 h-10 bg-lavender-light rounded-lg flex items-center justify-center">
-                  <item.icon className="h-5 w-5 text-purple-dark" />
+                  <item.icon className="h-5 w-5 text-purple-ink" />
                 </div>
                 <span className="text-sm font-medium text-charcoal">{item.text}</span>
               </div>

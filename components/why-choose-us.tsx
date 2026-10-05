@@ -35,11 +35,11 @@ const features = [
 
 export function WhyChooseUs() {
   return (
-    <section id="why-us" className="py-20 lg:py-28 bg-white">
+    <section id="why-us" className="py-20 lg:py-28 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-purple-dark text-balance">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-purple-ink text-balance">
             Why Choose Castle Keys
           </h2>
           <p className="mt-4 text-lg text-charcoal/70 leading-relaxed">
@@ -54,10 +54,10 @@ export function WhyChooseUs() {
               key={index}
               className="group p-6 lg:p-8 bg-lavender-light/50 rounded-2xl border border-gray-border hover:border-lavender hover:shadow-lg hover:shadow-lavender/10 transition-all duration-300"
             >
-              <div className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:bg-purple-cta group-hover:shadow-purple-cta/25 transition-all duration-300">
-                <feature.icon className="h-7 w-7 text-purple-dark group-hover:text-white transition-colors duration-300" />
+              <div className="w-14 h-14 bg-surface rounded-xl shadow-sm flex items-center justify-center group-hover:bg-purple-cta group-hover:shadow-purple-cta/25 transition-all duration-300">
+                <feature.icon className="h-7 w-7 text-purple-ink group-hover:text-white transition-colors duration-300" />
               </div>
-              <h3 className="mt-5 text-xl font-semibold text-purple-dark">
+              <h3 className="mt-5 text-xl font-semibold text-purple-ink">
                 {feature.title}
               </h3>
               <p className="mt-3 text-charcoal/70 leading-relaxed">

@@ -11,11 +11,13 @@ const config: Config = {
     extend: {
       colors: {
         "purple-dark": "var(--purple-dark)",
+        "purple-ink": "var(--purple-ink)",
         "purple-cta": "var(--purple-cta)",
         "lavender": "var(--lavender)",
         "lavender-light": "var(--lavender-light)",
         "charcoal": "var(--charcoal)",
         "gray-border": "var(--gray-border)",
+        "surface": "var(--surface)",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],

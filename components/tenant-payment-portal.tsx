@@ -24,7 +24,7 @@ export function TenantPaymentPortal() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           <div>
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-purple-dark text-balance">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-purple-ink text-balance">
               Tenant Payment Portal
             </h1>
             <p className="mt-4 text-lg text-charcoal/70 leading-relaxed">
@@ -48,7 +48,7 @@ export function TenantPaymentPortal() {
               Questions about your payment? Call{" "}
               <a
                 href="tel:281-380-2128"
-                className="font-medium text-purple-cta hover:text-purple-dark transition-colors"
+                className="font-medium text-purple-cta hover:text-purple-ink transition-colors"
               >
                 281-380-2128
               </a>
@@ -56,13 +56,13 @@ export function TenantPaymentPortal() {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl shadow-purple-dark/10 border border-gray-border p-8 sm:p-10">
+          <div className="bg-surface rounded-2xl shadow-xl shadow-purple-dark/10 border border-gray-border p-8 sm:p-10">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 bg-lavender-light rounded-xl flex items-center justify-center border border-gray-border">
                 <CreditCard className="h-7 w-7 text-purple-cta" />
               </div>
               <div>
-                <h2 className="text-xl font-semibold text-purple-dark">Make a Payment</h2>
+                <h2 className="text-xl font-semibold text-purple-ink">Make a Payment</h2>
                 <p className="text-sm text-charcoal/60 mt-1">Castle Keys of Texas: Rental Payments</p>
               </div>
             </div>
@@ -95,7 +95,7 @@ export function TenantPaymentPortal() {
               Prefer to stay on this tab?{" "}
               <Link
                 href={SWIPESIMPLE_PAYMENT_URL}
-                className="text-purple-cta hover:text-purple-dark font-medium underline-offset-2 hover:underline"
+                className="text-purple-cta hover:text-purple-ink font-medium underline-offset-2 hover:underline"
               >
                 Open payment form here
               </Link>
