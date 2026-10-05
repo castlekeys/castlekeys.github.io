@@ -23,7 +23,7 @@ const mobileOutlineLinkClassName =
   "flex items-center justify-center gap-2 w-full py-3 rounded-full border-2 border-purple-ink text-purple-ink font-semibold text-base hover:bg-purple-dark hover:text-white transition-colors"
 
 const desktopPhoneClassName =
-  "items-center gap-2.5 text-base xl:text-lg font-semibold tabular-nums tracking-tight text-purple-ink hover:text-purple-cta transition-colors shrink-0"
+  "inline-flex items-center gap-1.5 xl:gap-2.5 text-sm xl:text-base font-semibold tabular-nums tracking-tight text-purple-ink hover:text-purple-cta transition-colors whitespace-nowrap shrink-0"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -32,10 +32,10 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-lavender-light/95 backdrop-blur-sm border-b border-gray-border">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex min-h-20 py-3 lg:py-2 items-center justify-between">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4 xl:px-8">
+        <div className="flex min-h-20 py-3 lg:py-2 items-center justify-between gap-3">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3 shrink-0">
             <Image
               src="/images/castle-keys-logo.jpg"
               alt="Castle Keys Logo"
@@ -48,9 +48,9 @@ export function Header() {
             </span>
           </Link>
 
-          {/* Desktop: nav · phone · CTAs. Links stay in one row so labels cannot stack. */}
-          <div className="hidden lg:flex flex-1 items-center min-w-0 ml-4 xl:ml-6 gap-3 xl:gap-6">
-            <nav className="flex items-center gap-x-3 xl:gap-x-6 shrink-0">
+          {/* Each group is shrink-0 so labels stay side by side instead of painting over each other. */}
+          <div className="hidden lg:flex flex-1 items-center justify-between gap-2 xl:gap-6 ml-2 xl:ml-8 min-w-0">
+            <nav className="flex items-center gap-x-2 xl:gap-x-6 shrink-0">
               {navSectionLinks.map((link) => (
                 <SectionLink
                   key={link.href}
@@ -62,16 +62,14 @@ export function Header() {
               ))}
             </nav>
 
-            <div className="flex flex-1 items-center justify-center min-w-0 px-3">
-              <Link href="tel:281-380-2128" className={`${desktopPhoneClassName} hidden min-[1120px]:inline-flex`}>
-                <Phone className="h-5 w-5 xl:h-6 xl:w-6 shrink-0" aria-hidden />
-                <span className="whitespace-nowrap">281-380-2128</span>
-              </Link>
-            </div>
+            <Link href="tel:281-380-2128" className={desktopPhoneClassName}>
+              <Phone className="h-4 w-4 xl:h-5 xl:w-5 shrink-0" aria-hidden />
+              <span>281-380-2128</span>
+            </Link>
 
             <div className="flex items-center gap-2 shrink-0">
-              <div className="flex flex-col gap-1.5 items-stretch shrink-0">
-                <Button asChild className={`${primaryCtaClassName} px-4 xl:px-5 text-sm h-9`}>
+              <div className="flex flex-col gap-1.5 items-stretch">
+                <Button asChild className={`${primaryCtaClassName} px-2.5 xl:px-5 text-sm h-9`}>
                   {isHome ? (
                     <HashSectionLink href="#contact">Request Property Review</HashSectionLink>
                   ) : (
@@ -81,7 +79,7 @@ export function Header() {
                 <Button
                   asChild
                   variant="outline"
-                  className={`${outlineCtaButtonClassName} px-4 xl:px-5 text-sm font-semibold h-9 whitespace-nowrap`}
+                  className={`${outlineCtaButtonClassName} px-2.5 xl:px-5 text-sm font-semibold h-9 whitespace-nowrap`}
                 >
                   <Link href={PAYMENT_PAGE_PATH}>Tenant Payment Portal</Link>
                 </Button>
@@ -90,12 +88,11 @@ export function Header() {
             </div>
           </div>
 
-          {/* Mobile: theme + menu */}
           <div className="flex items-center gap-2 lg:hidden">
             <ThemeToggle />
           <button
             type="button"
-            className="lg:hidden flex items-center justify-center w-10 h-10 rounded-xl bg-lavender/40 hover:bg-lavender/70 text-purple-ink transition-colors"
+            className="flex items-center justify-center w-10 h-10 rounded-xl bg-lavender/40 hover:bg-lavender/70 text-purple-ink transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
