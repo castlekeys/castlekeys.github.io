@@ -4,12 +4,8 @@ Static marketing site for [castlekeysoftexas.com](https://castlekeysoftexas.com)
 
 ## Requirements
 
-- Node.js **20.x** (`engines` in `package.json`)
+- Node.js **20.9 or later** (`engines` in `package.json`). Node 24 is fine locally. GitHub Actions still builds with Node 20.
 - npm
-
-```bash
-nvm use 20   # if using nvm
-```
 
 ## Local development
 
@@ -55,8 +51,8 @@ Pushes to `main` run `.github/workflows/nextjs.yml`: `npm ci` → `npm run expor
 
 | Issue | Fix |
 | --- | --- |
-| `EBADENGINE` warning | Use Node 20 (`nvm use 20`) |
+| `EBADENGINE` warning | Use Node 20.9 or later |
 | Port in use | `npm run dev -- -p 3001` |
 | Stale build | `rm -rf .next out node_modules && npm ci` |
 
-`npm audit` may report moderate PostCSS issues inside Next.js. Do not run `npm audit fix --force`, because it downgrades Next.js.
+Do not run `npm audit fix --force`. That flag can downgrade Next.js.
