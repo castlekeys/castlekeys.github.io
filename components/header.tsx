@@ -23,10 +23,7 @@ const mobileOutlineLinkClassName =
   "flex items-center justify-center gap-2 w-full py-3 rounded-full border-2 border-purple-ink text-purple-ink font-semibold text-base hover:bg-purple-dark hover:text-white transition-colors"
 
 const desktopPhoneClassName =
-  "inline-flex items-center gap-2.5 text-base xl:text-lg font-semibold tabular-nums tracking-tight text-purple-ink hover:text-purple-cta transition-colors shrink-0"
-
-const navLinksMain = navSectionLinks.slice(0, -1)
-const contactNavLink = navSectionLinks[navSectionLinks.length - 1]
+  "items-center gap-2.5 text-base xl:text-lg font-semibold tabular-nums tracking-tight text-purple-ink hover:text-purple-cta transition-colors shrink-0"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -51,38 +48,30 @@ export function Header() {
             </span>
           </Link>
 
-          {/* Desktop: nav · Contact · phone (centered) · CTAs */}
-          <div className="hidden lg:flex flex-1 items-center justify-end gap-8 min-w-0 ml-6">
-            <nav className="flex items-center gap-8 shrink-0">
-              {navLinksMain.map((link) => (
+          {/* Desktop: nav · phone · CTAs. Links stay in one row so labels cannot stack. */}
+          <div className="hidden lg:flex flex-1 items-center min-w-0 ml-4 xl:ml-6 gap-3 xl:gap-6">
+            <nav className="flex items-center gap-x-3 xl:gap-x-6 shrink-0">
+              {navSectionLinks.map((link) => (
                 <SectionLink
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-medium text-charcoal hover:text-purple-ink transition-colors"
+                  className="text-sm font-medium text-charcoal hover:text-purple-ink transition-colors whitespace-nowrap"
                 >
                   {link.label}
                 </SectionLink>
               ))}
             </nav>
 
-            <div className="flex flex-1 items-center justify-end min-w-0 max-w-3xl">
-              <SectionLink
-                href={contactNavLink.href}
-                className="text-sm font-medium text-charcoal hover:text-purple-ink transition-colors shrink-0"
-              >
-                {contactNavLink.label}
-              </SectionLink>
+            <div className="flex flex-1 items-center justify-center min-w-0 px-3">
+              <Link href="tel:281-380-2128" className={`${desktopPhoneClassName} hidden min-[1120px]:inline-flex`}>
+                <Phone className="h-5 w-5 xl:h-6 xl:w-6 shrink-0" aria-hidden />
+                <span className="whitespace-nowrap">281-380-2128</span>
+              </Link>
+            </div>
 
-              <div className="flex flex-1 items-center justify-center px-6 sm:px-8 min-w-[10rem]">
-                <Link href="tel:281-380-2128" className={desktopPhoneClassName}>
-                  <Phone className="h-5 w-5 xl:h-6 xl:w-6 shrink-0" aria-hidden />
-                  <span>281-380-2128</span>
-                </Link>
-              </div>
-
-              <div className="flex items-center gap-2 shrink-0">
-              <div className="flex flex-col gap-2 items-stretch shrink-0">
-                <Button asChild className={`${primaryCtaClassName} px-5 text-sm h-9`}>
+            <div className="flex items-center gap-2 shrink-0">
+              <div className="flex flex-col gap-1.5 items-stretch shrink-0">
+                <Button asChild className={`${primaryCtaClassName} px-4 xl:px-5 text-sm h-9`}>
                   {isHome ? (
                     <HashSectionLink href="#contact">Request Property Review</HashSectionLink>
                   ) : (
@@ -92,13 +81,12 @@ export function Header() {
                 <Button
                   asChild
                   variant="outline"
-                  className={`${outlineCtaButtonClassName} px-5 text-sm font-semibold h-9 whitespace-nowrap`}
+                  className={`${outlineCtaButtonClassName} px-4 xl:px-5 text-sm font-semibold h-9 whitespace-nowrap`}
                 >
                   <Link href={PAYMENT_PAGE_PATH}>Tenant Payment Portal</Link>
                 </Button>
               </div>
               <ThemeToggle />
-              </div>
             </div>
           </div>
 
